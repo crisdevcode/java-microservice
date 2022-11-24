@@ -1,4 +1,4 @@
-package com.client.microservice.entity;
+package com.client.microservice.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

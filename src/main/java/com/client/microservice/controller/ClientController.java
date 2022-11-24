@@ -3,6 +3,7 @@ package com.client.microservice.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.client.microservice.entity.Client;
+import com.client.microservice.config.exception.BadRequestException;
+import com.client.microservice.config.exception.NotFoundException;
+import com.client.microservice.model.Client;
 import com.client.microservice.service.ClientService;
 
 @RestController
@@ -34,7 +37,7 @@ public class ClientController {
 	public ResponseEntity<Client> getClient(@PathVariable("id") Long id){
 		Client client = clientService.getClientById(id);
 		if(client == null) {
-			return ResponseEntity.notFound().build();
+			throw new NotFoundException("Client with Id " + id + " does not exist");
 		}
 		return ResponseEntity.ok(client);
 	}
@@ -43,7 +46,7 @@ public class ClientController {
 	public ResponseEntity<List<Client>> getClientInfo(@PathVariable String type, @PathVariable String number){
 		 List<Client> client = clientService.getClientByDocument(type, number);
 		 if(client == null) {
-			 return ResponseEntity.notFound().build();
+			 return ResponseEntity.noContent().build();
 		 }
 		return ResponseEntity.ok(client);
 	}

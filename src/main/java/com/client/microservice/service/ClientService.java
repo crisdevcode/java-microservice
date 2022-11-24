@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.client.microservice.entity.Client;
+import com.client.microservice.model.Client;
 import com.client.microservice.repository.ClientRepository;
 
 
@@ -24,6 +24,7 @@ public class ClientService {
 	}
 	
 	public List<Client> getClientByDocument(String type, String number) {
+		
 		return clientRepository.getClientByDocument(type, number);
 	}
 	

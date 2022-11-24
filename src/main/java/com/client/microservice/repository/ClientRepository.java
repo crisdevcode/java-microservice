@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.client.microservice.entity.Client;
+import com.client.microservice.model.Client;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
