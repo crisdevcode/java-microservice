@@ -32,6 +32,6 @@ Se requiere crear un microservicio REST que permita consultar la información b�
 Documentación disponible en: 
 - [Docs](http://localhost:8090/api/v2/swagger-ui/index.html)
 
-## Author
+## Autor
 Cristian Unigarro
 
