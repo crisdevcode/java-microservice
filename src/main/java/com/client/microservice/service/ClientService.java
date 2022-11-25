@@ -2,6 +2,8 @@ package com.client.microservice.service;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,20 @@ public class ClientService {
 	
 	@Autowired
 	private ClientRepository clientRepository;
+	
+	@PostConstruct
+	public void init() {
+		// Mock Data
+		if(clientRepository.findAll().isEmpty()) {
+			Client client = new Client();
+			client.setFirstName("Peter");
+			client.setLastName("Parker");
+			client.setDocumentType("C");
+			client.setDocumentNumber("23445322");
+			
+			save(client);
+		}
+	}
 	
 	public List<Client> getAll() {
 		return clientRepository.findAll();
