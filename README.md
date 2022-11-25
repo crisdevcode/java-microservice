@@ -19,7 +19,7 @@ Se requiere crear un microservicio REST que permita consultar la informaci√≥n b√
 
 ## Dependencias
 - Spring Web
-- Sprint Data JPA
+- Spring Data JPA
 - Spring Boot DevTools
 - H2 Database
 - Swagger
