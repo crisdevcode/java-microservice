@@ -49,7 +49,7 @@ public class ClientController {
 	
 	@ApiOperation(value = "Retorna un cliente basado en el tipo y número de documento")
 	@GetMapping("/document/{type}/{number}")
-	public ResponseEntity<List<Client>> getClientInfo(@ApiParam(value = "Tipo y número del cliente a consultar", required = true) @PathVariable String type, @PathVariable String number){
+	public ResponseEntity<List<Client>> getClientInfo(@ApiParam(value = "Tipo de documento (C o P)", required = true) @PathVariable String type, @ApiParam(value = "Número de documento", required = true) @PathVariable String number){
 		 List<Client> client = clientService.getClientByDocument(type, number);
 		 if(client == null) {
 			 return ResponseEntity.noContent().build();
@@ -57,7 +57,7 @@ public class ClientController {
 		return ResponseEntity.ok(client);
 	}
 
-	@ApiOperation(value = "Crea un nuevo cliente recibido en la petición")
+	@ApiOperation(value = "Crea un nuevo cliente")
 	@PostMapping
 	public ResponseEntity<Client> saveClient(@RequestBody Client client) {
 		Client newClient = clientService.save(client);
